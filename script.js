@@ -16,7 +16,8 @@ navigation?.querySelectorAll('a').forEach((link) => {
   });
 });
 
-document.querySelector('#year').textContent = String(new Date().getFullYear());
+const yearElement = document.querySelector('#year');
+if (yearElement) yearElement.textContent = String(new Date().getFullYear());
 
 const revealSelectors = [
   '.hero-copy', '.hero-phones', '.features-intro', '.feature-card',
@@ -46,3 +47,22 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
 
   revealElements.forEach((element) => revealObserver.observe(element));
 }
+
+
+// Close the responsive menu predictably without leaving it over page content.
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') {
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-label', 'Open navigation');
+    navigation?.classList.remove('open');
+    menuButton.focus();
+  }
+});
+document.addEventListener('click', (event) => {
+  if (!navigation || !menuButton || menuButton.getAttribute('aria-expanded') !== 'true') return;
+  if (!navigation.contains(event.target) && !menuButton.contains(event.target)) {
+    menuButton.setAttribute('aria-expanded', 'false');
+    menuButton.setAttribute('aria-label', 'Open navigation');
+    navigation.classList.remove('open');
+  }
+});
