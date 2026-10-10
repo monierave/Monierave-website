@@ -20,12 +20,14 @@ document.querySelector('#year').textContent = String(new Date().getFullYear());
 
 const revealSelectors = [
   '.hero-copy', '.hero-phones', '.features-intro', '.feature-card',
+  '.people-copy', '.people-photo',
   '.app-preview', '.app-copy', '.currencies > div', '.currency-item',
   '.faq-section > div', '.faq-list details', '.closing-cta > *',
   '.page-hero-inner > *', '.page-content > .eyebrow', '.page-content > h2',
   '.page-content > .page-lead', '.page-card', '.about-story > div',
   '.page-values article', '.page-banner > *', '.page-contact > *',
-  '.security-note', '.site-footer > *'
+  '.security-note', '.site-footer > *', '.availability-card',
+  '.contact-layout > *', '.contact-shortcuts > *', '.contact-email-card'
 ].join(',');
 
 if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
