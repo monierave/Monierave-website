@@ -410,3 +410,106 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
   .hero h1 { font-size: clamp(34px, 10vw, 40px); }
   .hero-actions .button { white-space: normal; padding-left: 14px; padding-right: 14px; }
 }
+
+
+/* Currency flags and overflow-safe currency cards. */
+.currency-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  gap: clamp(8px, 1.4vw, 14px);
+  width: 100%;
+}
+.currency-item {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 108px;
+  height: auto;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 5px;
+  overflow-wrap: anywhere;
+}
+.currency-item b {
+  display: block;
+  font-size: 25px;
+  line-height: 1.2;
+  font-weight: 500;
+}
+.currency-item strong {
+  font-size: 12px;
+  line-height: 1.3;
+}
+.currency-item small {
+  display: block;
+  max-width: 100%;
+  font-size: 10px;
+  line-height: 1.35;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.currency-item.upcoming {
+  border: 1px solid #ffffff25;
+  background: #ffffff0b;
+}
+.currency-item.upcoming small {
+  color: #e0e9e3;
+}
+.availability-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.availability-card {
+  min-width: 0;
+  flex-wrap: wrap;
+}
+.availability-card > div {
+  min-width: 0;
+  flex: 1 1 110px;
+}
+.availability-card > strong {
+  margin-left: auto;
+  white-space: normal;
+  text-align: right;
+  line-height: 1.45;
+}
+.currency-symbol {
+  font-size: 25px;
+  line-height: 1.2;
+}
+@media (max-width: 760px) {
+  .currency-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .currency-item {
+    min-height: 104px;
+    padding: 12px 8px;
+  }
+  .availability-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .availability-card {
+    gap: 12px;
+  }
+  .availability-card > strong {
+    flex: 0 1 auto;
+    margin-left: 0;
+    text-align: left;
+  }
+}
+@media (max-width: 360px) {
+  .currency-list {
+    gap: 8px;
+  }
+  .currency-item {
+    padding: 10px 6px;
+  }
+  .currency-item small {
+    font-size: 9px;
+  }
+}
