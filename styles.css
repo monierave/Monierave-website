@@ -666,3 +666,174 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
   .currencies { margin-left: 10px; margin-right: 10px; padding: 18px 12px; }
   .currencies .currency-item small, .page-banner .currency-item small { font-size: 9px; }
 }
+
+
+/* Final currency section layout: full-width flag cards with generous room for labels. */
+.currencies {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+  justify-content: initial;
+  gap: 18px;
+  padding: clamp(22px, 3vw, 32px);
+  overflow: visible;
+}
+.currencies .currency-intro {
+  width: 100%;
+  max-width: 760px;
+  min-width: 0;
+  flex: initial;
+}
+.currencies .currency-intro > p:last-child {
+  max-width: 650px;
+  font-size: 14px;
+  line-height: 1.65;
+}
+.currencies .currency-list,
+.page-banner .currency-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: 100%;
+  min-width: 0;
+  flex: initial;
+  gap: 12px;
+}
+.currencies .currency-item,
+.page-banner .currency-item {
+  width: 100%;
+  min-width: 0;
+  min-height: 132px;
+  height: auto;
+  box-sizing: border-box;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.currency-flag {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 32px;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px #ffffff45;
+}
+.currency-flag svg {
+  display: block;
+  width: 48px;
+  height: 32px;
+  max-width: none;
+  border-radius: 4px;
+}
+.currencies .currency-item strong,
+.page-banner .currency-item strong {
+  font-size: 14px;
+  line-height: 1.3;
+}
+.currencies .currency-item small,
+.page-banner .currency-item small {
+  display: block;
+  max-width: 100%;
+  font-size: 12px;
+  line-height: 1.45;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.currencies .currency-details-link {
+  justify-self: start;
+  grid-column: 1;
+  max-width: none;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: normal;
+}
+.page-banner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+.page-banner > div:first-child {
+  min-width: 0;
+  width: 100%;
+  max-width: 760px;
+}
+.page-banner h2 { overflow-wrap: normal; }
+.availability-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.availability-card {
+  min-width: 0;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.availability-card > div {
+  min-width: 0;
+  flex: 1 1 110px;
+}
+.availability-card > strong {
+  margin-left: 0;
+  white-space: normal;
+  text-align: left;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.currency-symbol {
+  flex: 0 0 48px;
+  width: 48px;
+  height: 36px;
+}
+.currency-symbol .currency-flag,
+.currency-symbol .currency-flag svg {
+  width: 48px;
+  height: 32px;
+}
+@media (max-width: 760px) {
+  .currencies {
+    margin-left: 16px;
+    margin-right: 16px;
+    padding: 22px 18px;
+    gap: 16px;
+  }
+  .currencies .currency-list,
+  .page-banner .currency-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .currencies .currency-item,
+  .page-banner .currency-item {
+    min-height: 120px;
+    padding: 14px 10px;
+  }
+  .currency-flag,
+  .currency-flag svg {
+    width: 44px;
+    height: 30px;
+  }
+  .currencies .currency-item small,
+  .page-banner .currency-item small {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+  .availability-grid { grid-template-columns: minmax(0, 1fr); }
+  .availability-card { align-items: center; }
+  .availability-card > strong { flex-basis: 100%; padding-left: 62px; }
+}
+@media (max-width: 360px) {
+  .currencies { margin-left: 10px; margin-right: 10px; padding: 18px 12px; }
+  .currencies .currency-item,
+  .page-banner .currency-item { padding: 12px 7px; }
+  .currencies .currency-item small,
+  .page-banner .currency-item small { font-size: 11px; }
+}
