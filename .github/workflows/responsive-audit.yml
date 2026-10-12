@@ -1,0 +1,38 @@
+name: Website responsive audit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  responsive-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out website
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Playwright
+        run: npm install --no-save playwright
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Start static website
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/monierave-web.log 2>&1 &
+          echo $! > /tmp/monierave-web.pid
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:4173/index.html >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/monierave-web.log
+          exit 1
+      - name: Audit all pages on phone, tablet and desktop viewports
+        run: node tests/responsive-audit.mjs
+      - name: Print web server log if the audit fails
+        if: failure()
+        run: cat /tmp/monierave-web.log || true
