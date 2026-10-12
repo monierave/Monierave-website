@@ -513,3 +513,156 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
     font-size: 9px;
   }
 }
+
+
+/* Corrective currency-card layout: fixed vector flags and roomy responsive cards. */
+.currencies {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 18px 22px;
+  overflow: visible;
+}
+.currencies::after { border-radius: inherit; }
+.currency-intro {
+  flex: 1 1 220px;
+  min-width: 190px;
+  max-width: 330px;
+}
+.currencies .currency-intro > p:last-child {
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: normal;
+}
+.currencies .currency-list {
+  flex: 1 1 360px;
+  min-width: 0;
+  width: auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.currencies .currency-item {
+  width: 100%;
+  min-width: 0;
+  min-height: 104px;
+  height: auto;
+  padding: 12px 6px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  text-align: center;
+  overflow-wrap: normal;
+}
+.currency-flag, .currency-symbol {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 36px;
+  height: 24px;
+  font-size: 0;
+  line-height: 0;
+}
+.currency-flag svg, .currency-symbol svg {
+  display: block;
+  width: 36px;
+  height: 24px;
+  max-width: none;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.currencies .currency-item strong {
+  font-size: 12px;
+  line-height: 1.2;
+}
+.currencies .currency-item small {
+  max-width: 100%;
+  font-size: 10px;
+  line-height: 1.35;
+  white-space: normal;
+  overflow-wrap: normal;
+  text-align: center;
+}
+.currencies .currency-details-link {
+  flex: 0 0 auto;
+  white-space: normal;
+  max-width: 150px;
+  line-height: 1.5;
+}
+.page-banner {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.page-banner > div:first-child {
+  flex: 1 1 210px;
+  min-width: 0;
+}
+.page-banner .currency-list {
+  flex: 1 1 360px;
+  width: auto;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+.page-banner .currency-item {
+  width: 100%;
+  min-width: 0;
+  min-height: 104px;
+  height: auto;
+  padding: 12px 6px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  text-align: center;
+}
+.page-banner .currency-item small {
+  font-size: 10px;
+  line-height: 1.35;
+  white-space: normal;
+}
+.availability-card .currency-symbol {
+  width: 46px;
+  height: 32px;
+}
+.availability-card .currency-symbol svg {
+  width: 46px;
+  height: 32px;
+}
+@media (max-width: 980px) {
+  .currencies { align-items: flex-start; }
+  .currency-intro { flex: 1 1 100%; max-width: none; }
+  .currencies .currency-list { flex: 1 1 100%; }
+  .currencies .currency-details-link { max-width: none; }
+}
+@media (max-width: 760px) {
+  .currencies { margin-left: 16px; margin-right: 16px; padding: 22px 18px; }
+  .currencies .currency-list, .page-banner .currency-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    flex: 1 1 100%;
+    width: 100%;
+    gap: 10px;
+  }
+  .currencies .currency-item, .page-banner .currency-item {
+    min-height: 108px;
+    padding: 12px 8px;
+  }
+  .currency-flag, .currency-symbol, .currency-flag svg, .currency-symbol svg {
+    width: 36px;
+    height: 24px;
+  }
+  .page-banner { align-items: stretch; }
+  .page-banner > div:first-child { flex-basis: 100%; }
+  .availability-card { align-items: center; }
+}
+@media (max-width: 360px) {
+  .currencies { margin-left: 10px; margin-right: 10px; padding: 18px 12px; }
+  .currencies .currency-item small, .page-banner .currency-item small { font-size: 9px; }
+}
