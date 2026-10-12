@@ -355,3 +355,58 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 .download-footnote{grid-column:1/-1;color:var(--muted);font-size:11px;line-height:1.7;margin:0}
 @media(max-width:900px){.download-section{grid-template-columns:1fr;gap:24px}.download-heading>p:last-child{max-width:620px}}
 @media(max-width:560px){.download-options{grid-template-columns:1fr}.download-card{min-height:unset}.download-card .button{width:100%}.download-section{padding-top:58px;padding-bottom:58px}}
+
+
+/* Layout safety pass: prevent narrow-screen overflow and flex/grid collisions across every public page. */
+:where(main, header, footer, section, article, nav, figure, form, fieldset, .page-content, .page-hero-inner, .hero-copy, .hero-phones, .app-copy, .app-preview, .download-heading, .download-options, .download-card, .contact-layout, .contact-email-card, .availability-card) { min-width: 0; }
+:where(h1, h2, h3, p, li, small, strong, a, button, label, summary) { overflow-wrap: anywhere; }
+:where(img, video, canvas, iframe) { max-width: 100%; }
+:where(input, select, textarea, button) { max-width: 100%; }
+.site-header > *, .header-actions > *, .hero-actions > *, .site-footer > * { min-width: 0; }
+.download-section { width: 100%; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
+.download-options > * { min-width: 0; }
+.download-card .button { white-space: normal; text-align: center; }
+.currency-list, .currency-item, .availability-card, .contact-email-card { min-width: 0; }
+.page-card-grid > *, .feature-grid > *, .availability-grid > *, .contact-shortcuts > * { min-width: 0; }
+@media (max-width: 1024px) {
+  .site-header, .inner-page .site-header { gap: 10px; }
+  .menu-toggle { display: grid; gap: 5px; order: 3; flex: 0 0 auto; background: transparent; border: 0; padding: 10px; }
+  .menu-toggle span { display: block; width: 23px; height: 2px; background: white; border-radius: 2px; }
+  .primary-nav, .inner-page .primary-nav {
+    display: none; position: absolute; z-index: 30; top: calc(100% - 1px); left: 0; right: 0; width: 100%;
+    max-height: min(72vh, 520px); overflow-y: auto; overscroll-behavior: contain; margin: 0; padding: 12px 20px 18px;
+    border: 1px solid #ffffff1c; border-radius: 0 0 16px 16px; background: #082920; box-shadow: 0 18px 35px #0004;
+    flex-direction: column; align-items: stretch; gap: 0;
+  }
+  .primary-nav.open, .inner-page .primary-nav.open { display: flex; }
+  .primary-nav a { display: block; width: 100%; padding: 14px 2px; font-size: 15px; line-height: 1.4; border-bottom: 1px solid #ffffff15; }
+  .primary-nav .active:after { display: none; }
+  .header-actions { margin-left: auto; flex: 0 0 auto; }
+  .hero-inner { grid-template-columns: minmax(0, 1fr); gap: 18px; padding-top: 120px; }
+  .hero-copy { max-width: 720px; }
+  .hero-phones { width: min(100%, 560px); height: auto; min-height: 0; justify-self: center; padding: 0; }
+  .hero-phones .device-art { display: block; width: 100%; height: auto; }
+  .download-section { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+}
+@media (max-width: 650px) {
+  .site-header, .inner-page .site-header { padding-left: 14px; padding-right: 12px; }
+  .header-actions .button-lime { max-width: 132px; padding-left: 11px; padding-right: 11px; }
+  .hero-inner { padding-left: 22px; padding-right: 22px; }
+  .hero-phones { margin-top: 4px; }
+  .download-options { grid-template-columns: minmax(0, 1fr); }
+  .download-card { padding: 21px; }
+  .download-section { padding-top: 48px; padding-bottom: 48px; }
+  .download-heading h2 { font-size: clamp(30px, 8.5vw, 42px); }
+  .currencies { flex-wrap: wrap; }
+  .currency-details-link { margin-left: 0; }
+  .availability-card { flex-wrap: wrap; }
+  .availability-card > strong { margin-left: 0; white-space: normal; }
+}
+@media (max-width: 360px) {
+  .brand-copy small { font-size: 5px; letter-spacing: .35px; }
+  .brand-copy strong { font-size: 12px; }
+  .brand > img { width: 31px; height: 31px; }
+  .header-actions .button-lime { max-width: 112px; font-size: 10px; }
+  .hero h1 { font-size: clamp(34px, 10vw, 40px); }
+  .hero-actions .button { white-space: normal; padding-left: 14px; padding-right: 14px; }
+}
