@@ -335,3 +335,23 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 .legal-copy a{color:#17623d;text-decoration:underline;text-underline-offset:3px}
 .legal-copy em{display:block;margin-top:28px;padding:16px;border-left:3px solid #d7ff8a;background:#f5f9f2;font-size:14px}
 @media(max-width:640px){.legal-page .content-section{padding:30px 20px}.legal-copy{font-size:15px;line-height:1.75}}
+
+
+/* Official mobile app download section */
+.download-section{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;background:var(--mist)}
+.download-heading h2{font-size:clamp(30px,4vw,46px);line-height:1.12;letter-spacing:-1.8px;margin:0 0 16px;color:var(--forest)}
+.download-heading h2 span{color:#367346}
+.download-heading>p:last-child{max-width:390px;color:var(--muted);line-height:1.8}
+.download-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.download-card{display:flex;flex-direction:column;align-items:flex-start;min-height:310px;padding:25px;border:1px solid #dfe8e2;border-radius:20px;background:#fff;box-shadow:0 12px 36px #102b2508}
+.download-platform-icon{width:46px;height:46px;display:grid;place-items:center;background:#e9f3e8;color:var(--forest);border-radius:14px}
+.download-platform-icon svg{width:23px;height:23px}
+.download-status{margin:20px 0 8px;color:#39734a;font-size:9px;font-weight:800;letter-spacing:1px}
+.download-card h3{font-size:18px;letter-spacing:-.4px;margin:0 0 10px;color:var(--forest)}
+.download-card>p:not(.download-status){font-size:12px;line-height:1.75;color:var(--muted);margin:0 0 22px}
+.download-card .button{margin-top:auto;min-height:42px}
+.button-disabled{background:#e7ebe8;color:#66716c;cursor:not-allowed;border:0}
+.button-outline-dark{border:1px solid #cbd7cf;color:var(--forest);background:white}
+.download-footnote{grid-column:1/-1;color:var(--muted);font-size:11px;line-height:1.7;margin:0}
+@media(max-width:900px){.download-section{grid-template-columns:1fr;gap:24px}.download-heading>p:last-child{max-width:620px}}
+@media(max-width:560px){.download-options{grid-template-columns:1fr}.download-card{min-height:unset}.download-card .button{width:100%}.download-section{padding-top:58px;padding-bottom:58px}}
