@@ -860,3 +860,19 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
   transform: none !important;
   box-shadow: none !important;
 }
+
+/* Approved MonieRave wordmark casing and split colors */
+.site-header .brand-copy strong,
+.site-footer .brand-copy strong,
+.brand .brand-copy strong {
+  font-family: 'Nunito', sans-serif !important;
+  font-weight: 800 !important;
+  text-transform: none !important;
+  letter-spacing: -0.035em;
+  color: #fff;
+  text-shadow: none !important;
+  filter: none !important;
+}
+.site-header .brand-copy strong span,
+.site-footer .brand-copy strong span,
+.brand .brand-copy strong span { color: #D7F5A5; }
