@@ -837,3 +837,14 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
   .currencies .currency-item small,
   .page-banner .currency-item small { font-size: 11px; }
 }
+
+
+/* MonieRave brand wordmark: consistent Nunito ExtraBold across site header and footer. */
+.site-header .brand-copy strong,
+.site-footer .brand-copy strong,
+.brand .brand-copy strong {
+  font-family: 'Nunito', sans-serif !important;
+  font-weight: 800 !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
