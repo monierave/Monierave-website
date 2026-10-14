@@ -849,3 +849,14 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
   text-shadow: none !important;
   filter: none !important;
 }
+
+
+/* Keep the MonieRave logo artwork crisp: no glow, shadow, or animated shine. */
+.brand > img,
+.brand-light > img,
+.site-footer .brand > img {
+  filter: none !important;
+  animation: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
